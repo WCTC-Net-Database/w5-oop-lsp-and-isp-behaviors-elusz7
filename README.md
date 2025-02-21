@@ -114,3 +114,36 @@ Here are some resource links to help students better understand the concepts cov
 #### Stretch Goal: Command Pattern
 - [Command Design Pattern in C#](https://refactoring.guru/design-patterns/command/csharp/example) - A comprehensive guide on implementing the Command Pattern in C#.
 - [The Command Pattern Explained](https://www.dofactory.com/net/command-design-pattern) - An overview of the Command Pattern with examples in .NET.
+
+### New Classes and Behaviors
+
+#### IFlyable
+- **Interface**: `public interface IFlyable { void Fly(); }`
+- **Implementation in Ghost**: The `Ghost` class implements `IFlyable` and uses a `FlyCommand` to encapsulate the fly functionality.
+
+#### ICastable
+- **Interface**: `public interface ICastable { string Spell { get; set; } void Cast(IEntity target); }`
+- **Implementation in Mage**: The `Mage` class implements `ICastable` and uses a `CastCommand` to encapsulate the casting functionality.
+
+#### IShiftable
+- **Interface**: `public interface IShiftable { string Form { get; set; } void Shift(); }`
+- **Implementation in Druid**: The `Druid` class implements `IShiftable` and uses a `ShiftCommand` to encapsulate the shifting functionality.
+
+### Mage
+- **ICastable**: The `Mage` class implements the `ICastable` interface to cast spells on other entities.
+
+### Druid
+- **IShiftable**: The `Druid` class implements the `IShiftable` interface to shift forms between human and animal.
+- **ICastable**: The `Druid` class also implements the `ICastable` interface to cast spells on other entities.
+
+### ICommand
+- **Interface**: `public interface ICommand { void Execute(); }`
+- **MoveCommand**: A concrete command class that implements `ICommand` to encapsulate the `Move()` functionality.
+- **AttackCommand**: A concrete command class that implements `ICommand` to encapsulate the `Attack()` functionality.
+- **FlyCommand**: A concrete command class that implements `ICommand` to encapsulate the `Fly()` functionality.
+- **CastCommand**: A concrete command class that implements `ICommand` to encapsulate the `Cast()` functionality.
+- **ShiftCommand**: A concrete command class that implements `ICommand` to encapsulate the `Shift()` functionality.
+
+### GameEngine
+- **Updated Behaviors**: The `GameEngine` now supports the new behaviors for `IFlyable`, `ICastable`, and `IShiftable`.
+- **Command Pattern**: The `GameEngine` now uses a list of commands and executes them sequentially using only the execute method.
