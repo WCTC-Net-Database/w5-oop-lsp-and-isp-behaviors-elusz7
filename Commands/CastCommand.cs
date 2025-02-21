@@ -18,7 +18,7 @@ namespace W5_assignment_template.Commands
         {
             this.Self = self;
             this.Target = target;
-            this.Spell = ((Mage)Self).Spell;
+            this.Spell = ((ICastable)Self).Spell;
         }
 
         public CastCommand(IEntity self, IEntity target, string spell)

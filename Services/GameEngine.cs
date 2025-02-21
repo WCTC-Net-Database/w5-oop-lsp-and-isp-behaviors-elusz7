@@ -1,5 +1,4 @@
-﻿using W5_assignment_template.Entities;
-using W5_assignment_template.Interfaces;
+﻿using W5_assignment_template.Interfaces;
 using W5_assignment_template.Commands;
 
 namespace W5_assignment_template.Services
@@ -43,7 +42,7 @@ namespace W5_assignment_template.Services
             AddCommand(new FlyCommand(_ghost));
             AddCommand(new MoveCommand(_mage));
             AddCommand(new CastCommand(_mage, _character));
-            ((Mage)_mage).Spell = "Ice Knife";
+            ((ICastable)_mage).Spell = "Ice Knife";
             AddCommand(new CastCommand(_mage, _goblin));
             AddCommand(new CastCommand(_mage, _ghost, "Poison Spray"));
 
