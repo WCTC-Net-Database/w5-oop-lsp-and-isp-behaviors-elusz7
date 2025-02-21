@@ -8,12 +8,19 @@ namespace W5_assignment_template.Services
         private readonly IEntity _character;
         private readonly IEntity _goblin;
         private readonly IEntity _ghost;
+        private readonly List<ICommand> _commands;
 
         public GameEngine(IEntity character, IEntity goblin, IEntity ghost)
         {
             _character = character;
             _goblin = goblin;
             _ghost = ghost;
+            _commands = new List<ICommand>();
+        }
+
+        public void AddCommand(ICommand command)
+        {
+            _commands.Add(command);
         }
 
         public void Run()
@@ -22,16 +29,20 @@ namespace W5_assignment_template.Services
             _goblin.Name = "Goblin";
             _ghost.Name = "Ghost";
 
-            _character.Move();
-            _character.Attack(_goblin);
+            // Add commands to the list
+            AddCommand(new MoveCommand(_character));
+            AddCommand(new AttackCommand(_character, _goblin));
+            AddCommand(new MoveCommand(_goblin));
+            AddCommand(new AttackCommand(_goblin, _ghost));
+            AddCommand(new MoveCommand(_ghost));
+            AddCommand(new AttackCommand(_ghost, _character));
+            AddCommand(new FlyCommand(_ghost));
 
-            _goblin.Move();
-            _goblin.Attack(_character);
-
-            _ghost.Move();
-            _ghost.Attack(_character);
-            if (_ghost is IFlyable)
-                ((Ghost) _ghost).Fly();
+            // Execute commands sequentially
+            foreach (var command in _commands)
+            {
+                command.Execute();
+            }
         }
     }
 }

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace W5_assignment_template.Interfaces
 {
-    interface ICommand
+    public interface ICommand
     {
-        public void Execute(IEntity self);
-
-        public void Execute(IEntity self, IEntity target);
+        void Execute();
     }
 }

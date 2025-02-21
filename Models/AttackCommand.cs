@@ -10,12 +10,18 @@ namespace W5_assignment_template.Models;
 
 public class AttackCommand : ICommand
 {
-    public void Execute(IEntity self)
+    private readonly IEntity self;
+    private IEntity target;
+    public AttackCommand(IEntity self, IEntity target)
     {
-        throw new NotImplementedException();
+        this.self = self;
+        this.target = target;
     }
-
-    public void Execute(IEntity self, IEntity target)
+    public void SetTarget(IEntity target)
+    {
+        this.target = target;
+    }
+    public void Execute()
     {
         Console.WriteLine($"{self.Name} attacks {target.Name}");
     }

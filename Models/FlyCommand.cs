@@ -9,14 +9,14 @@ using W5_assignment_template.Interfaces;
 namespace W5_assignment_template.Models;
 public class FlyCommand : ICommand
 {
-    public void Execute(IEntity self)
+    private readonly IEntity self;
+    public FlyCommand(IEntity entity)
+    {
+        this.self = entity;
+    }
+    public void Execute()
     {
         Console.WriteLine($"{self.Name} flies rapidly through the air.");
-    }
-
-    public void Execute(IEntity self, IEntity target)
-    {
-        throw new NotImplementedException();
     }
 }
 

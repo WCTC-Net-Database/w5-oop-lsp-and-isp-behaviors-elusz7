@@ -10,14 +10,14 @@ namespace W5_assignment_template.Models;
 
 public class MoveCommand : ICommand
 {
-    public void Execute(IEntity self)
+    private readonly IEntity self;
+    public MoveCommand(IEntity self)
+    {
+        this.self = self;
+    }
+    public void Execute()
     {
         Console.WriteLine($"{self.Name} moves forward.");
-    }
-
-    void ICommand.Execute(IEntity self, IEntity target)
-    {
-        throw new NotImplementedException();
     }
 }
 
