@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using W5_assignment_template.Entities;
 using W5_assignment_template.Interfaces;
 
-namespace W5_assignment_template.Models
+namespace W5_assignment_template.Commands
 {
     class CastCommand : ICommand
     {

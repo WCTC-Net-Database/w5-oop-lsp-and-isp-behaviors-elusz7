@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using W5_assignment_template.Interfaces;
 
-namespace W5_assignment_template.Models;
+namespace W5_assignment_template.Commands;
 
 public class AttackCommand : ICommand
 {

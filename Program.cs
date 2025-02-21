@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using W5_assignment_template.Interfaces;
-using W5_assignment_template.Models;
+﻿using W5_assignment_template.Entities;
 using W5_assignment_template.Services;
 
 namespace W5_assignment_template

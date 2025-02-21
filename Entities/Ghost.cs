@@ -1,6 +1,7 @@
 ﻿using W5_assignment_template.Interfaces;
+using W5_assignment_template.Commands;
 
-namespace W5_assignment_template.Models
+namespace W5_assignment_template.Entities
 {
     public class Ghost : IEntity, IFlyable
     {

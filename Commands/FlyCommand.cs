@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using W5_assignment_template.Interfaces;
 
-namespace W5_assignment_template.Models;
-
-public class MoveCommand : ICommand
+namespace W5_assignment_template.Commands;
+public class FlyCommand : ICommand
 {
     private readonly IEntity self;
-    public MoveCommand(IEntity self)
+    public FlyCommand(IEntity entity)
     {
-        this.self = self;
+        this.self = entity;
     }
     public void Execute()
     {
-        Console.WriteLine($"{self.Name} moves forward.");
+        Console.WriteLine($"{self.Name} flies rapidly through the air.");
     }
 }
 
