@@ -2,15 +2,17 @@
 
 namespace W5_assignment_template.Models
 {
-    public class Character : IEntity
+    public class Mage : IEntity
     {
         public string Name { get; set; }
+        public string Spell { get; set; }
         private readonly MoveCommand MoveCommand;
-        private readonly AttackCommand AttackCommand;
-        public Character()
+        private readonly CastCommand CastCommand;
+        public Mage()
         {
+            Spell = "Fire Bolt";
             MoveCommand = new(this);
-            AttackCommand = new(this, null);
+            CastCommand = new(this, null);
         }
         public void Move()
         {
@@ -19,8 +21,8 @@ namespace W5_assignment_template.Models
 
         public void Attack(IEntity target)
         {
-            AttackCommand.SetTarget(target);
-            AttackCommand.Execute();
+            CastCommand.SetTarget(target);
+            CastCommand.Execute();
         }
     }
 }

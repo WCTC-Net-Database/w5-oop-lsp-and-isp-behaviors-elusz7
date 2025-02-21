@@ -8,13 +8,15 @@ namespace W5_assignment_template.Services
         private readonly IEntity _character;
         private readonly IEntity _goblin;
         private readonly IEntity _ghost;
+        private IEntity _mage;
         private readonly List<ICommand> _commands;
 
-        public GameEngine(IEntity character, IEntity goblin, IEntity ghost)
+        public GameEngine(IEntity character, IEntity goblin, IEntity ghost, IEntity mage)
         {
             _character = character;
             _goblin = goblin;
             _ghost = ghost;
+            _mage = mage;
             _commands = new List<ICommand>();
         }
 
@@ -28,6 +30,7 @@ namespace W5_assignment_template.Services
             _character.Name = "Hero";
             _goblin.Name = "Goblin";
             _ghost.Name = "Ghost";
+            _mage.Name = "Sorcerer";
 
             // Add commands to the list
             AddCommand(new MoveCommand(_character));
@@ -35,8 +38,13 @@ namespace W5_assignment_template.Services
             AddCommand(new MoveCommand(_goblin));
             AddCommand(new AttackCommand(_goblin, _ghost));
             AddCommand(new MoveCommand(_ghost));
-            AddCommand(new AttackCommand(_ghost, _character));
+            AddCommand(new AttackCommand(_ghost, _mage));
             AddCommand(new FlyCommand(_ghost));
+            AddCommand(new MoveCommand(_mage));
+            AddCommand(new CastCommand(_mage, _character));
+            ((Mage)_mage).Spell = "Ice Knife";
+            AddCommand(new CastCommand(_mage, _goblin));
+            AddCommand(new CastCommand(_mage, _ghost, "Poison Spray"));
 
             // Execute commands sequentially
             foreach (var command in _commands)
