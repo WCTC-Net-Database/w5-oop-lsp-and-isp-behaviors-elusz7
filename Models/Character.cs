@@ -5,14 +5,16 @@ namespace W5_assignment_template.Models;
 public class Character : IEntity
 {
     public string Name { get; set; }
-
-    public void Attack(IEntity target)
-    {
-        Console.WriteLine($"{Name} attacks {target.Name}");
-    }
+    private readonly MoveCommand MoveCommand = new();
+    private readonly AttackCommand AttackCommand = new();
 
     public void Move()
     {
-        Console.WriteLine($"{Name} moves forward.");
+        MoveCommand.Execute(this);
+    }
+
+    public void Attack(IEntity target)
+    {
+        AttackCommand.Execute(this, target);
     }
 }

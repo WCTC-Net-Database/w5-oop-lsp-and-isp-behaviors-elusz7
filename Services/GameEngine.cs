@@ -30,7 +30,8 @@ namespace W5_assignment_template.Services
 
             _ghost.Move();
             _ghost.Attack(_character);
-            ((Ghost) _ghost).Fly();
+            if (_ghost is IFlyable)
+                ((Ghost) _ghost).Fly();
         }
     }
 }

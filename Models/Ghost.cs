@@ -5,20 +5,23 @@ namespace W5_assignment_template.Models
     public class Ghost : IEntity, IFlyable
     {
         public string Name { get; set; }
+        private readonly MoveCommand MoveCommand = new();
+        private readonly AttackCommand AttackCommand = new();
+        private readonly FlyCommand FlyCommand = new();
 
         public void Attack(IEntity target)
         {
-            Console.WriteLine($"{Name} attacks {target.Name} with a chilling touch.");
+            AttackCommand.Execute(this, target);
         }
 
         public void Move()
         {
-            Console.WriteLine($"{Name} floats silently.");
+            MoveCommand.Execute(this);
         }
 
         public void Fly()
         {
-            Console.WriteLine($"{Name} flies rapidly through the air.");
+            FlyCommand.Execute(this);
         }
     }
 }
